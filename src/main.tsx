@@ -1,49 +1,31 @@
-// core
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  Box,
-  Center,
-  ITheme,
-  Spinner,
-  Text,
-  Button,
-  useColorMode,
-} from "native-base";
+import { Box, ITheme, Spinner, useColorMode } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
 
-import useCachedResources from "./hooks/useCacheResource";
+import useCachedResources from "src/hooks/useCacheResource";
+import { navDarkTheme, navLightTheme } from "src/constant/theme";
+import linking from "src/constant/linking";
+import AppNavigator from "./navigation";
 
 const Main: React.FC<{ theme: ITheme }> = ({ theme }) => {
   const isLoadingComplete = useCachedResources();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
+
   return (
     <>
       {!isLoadingComplete && <Spinner size="lg" />}
 
       {isLoadingComplete && (
-        <>
-          <StatusBar />
-          <Center flex={1}>
-            <Box
-              p={4}
-              maxW="300"
-              _dark={{
-                bg: "coolGray.800",
-              }}
-              _light={{
-                bg: "warmGray.50",
-              }}
-            >
-              <Text fontSize="lg" display="flex" mb="20">
-                The active color mode is{" "}
-                <Text bold fontSize="lg">
-                  {colorMode}
-                </Text>
-              </Text>
-              <Button onPress={toggleColorMode}>Toggle</Button>
-            </Box>
-          </Center>
-        </>
+        <NavigationContainer
+          linking={linking}
+          theme={colorMode === "dark" ? navDarkTheme : navLightTheme}
+        >
+          <Box flex={1}>
+            <StatusBar style={colorMode === "dark" ? "light" : "dark"} />
+            <AppNavigator />
+          </Box>
+        </NavigationContainer>
       )}
     </>
   );
