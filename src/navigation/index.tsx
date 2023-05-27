@@ -1,5 +1,6 @@
 import StackNavigation, { StackProps } from "./stack.navigation";
 import { ROUTE, SCREENS } from "./route";
+import { useAuth } from "src/hooks/context/useAuth";
 
 const authRoutes: StackProps[] = [
   {
@@ -38,6 +39,12 @@ const dashboardRoutes: StackProps[] = [
 console.log(authRoutes, "authRoutes");
 
 const AppNavigator = () => {
-  return <StackNavigation routes={dashboardRoutes} initialRoute={ROUTE.home} />;
+  const { isAuthenticated } = useAuth();
+  return (
+    <StackNavigation
+      routes={isAuthenticated ? dashboardRoutes : authRoutes}
+      initialRoute={isAuthenticated ? ROUTE.home : ROUTE.welcome}
+    />
+  );
 };
 export default AppNavigator;
