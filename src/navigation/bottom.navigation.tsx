@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
-import { ROUTE } from "./route";
+import { ROUTE, SCREENS } from "./route";
 import { Box } from "native-base";
 
 const Tab = createBottomTabNavigator();
@@ -21,7 +21,7 @@ const BottomNavigation = () => {
           height: 100,
           elevation: 0,
           backfaceVisibility: "hidden",
-          backgroundColor: "white",
+          backgroundColor: "transparent",
           borderTopColor: "transparent",
           borderTopWidth: 0,
         },
@@ -29,7 +29,7 @@ const BottomNavigation = () => {
     >
       <Tab.Screen
         name={ROUTE.log}
-        component={() => <Box>hello Logs</Box>}
+        component={SCREENS[ROUTE.log]}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -42,7 +42,7 @@ const BottomNavigation = () => {
       />
       <Tab.Screen
         name={ROUTE.profile}
-        component={() => <Box>hello Profile</Box>}
+        component={SCREENS[ROUTE.profile]}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather

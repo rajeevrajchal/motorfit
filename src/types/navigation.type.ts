@@ -1,14 +1,14 @@
-import { NavigatorScreenParams } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
-  // Root: undefined;
-  // Signin: undefined;
-  // Signup: undefined;
-  // List: undefined;
-  // Settings: NavigatorScreenParams<SettingsScreenTabParamList>;
+  [key: string]: undefined;
 };
 
 export type SettingsScreenTabParamList = {
-  // UserSetting: undefined;
-  // AppConfig: undefined;
+  [key: string]: undefined;
 };
+
+export type NavigationProp = NativeStackScreenProps<
+  RootStackParamList,
+  keyof RootStackParamList
+>;
