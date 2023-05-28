@@ -11,13 +11,14 @@ import { InterfaceInputProps } from "native-base/lib/typescript/components/primi
 
 interface InputProps extends TextInputProps {
   label?: string;
+  placeholder?: string;
   errorMsg?: string;
   isDisabled?: boolean;
   type?: "number" | "text";
 }
 
 const Input = (props: InputProps) => {
-  const { label, type = "text", errorMsg, isDisabled } = props;
+  const { label, placeholder, type = "text", errorMsg, isDisabled } = props;
   const { colorMode } = useColorMode();
 
   const placeholderColor = colorMode === "dark" ? "white" : "black";
@@ -41,7 +42,7 @@ const Input = (props: InputProps) => {
           </FormControl.Label>
         )}
         <NInput
-          placeholder="Enter text"
+          placeholder={placeholder}
           autoCapitalize="none"
           keyboardAppearance="default"
           keyboardType={type === "number" ? "numeric" : "default"}
