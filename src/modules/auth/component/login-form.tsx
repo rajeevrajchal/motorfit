@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Button, Stack, Text } from "native-base";
+import { Button, Spinner, Stack, Text } from "native-base";
 import { useTranslation } from "react-i18next";
 
 import Input from "src/components/form/Input";
@@ -15,9 +15,7 @@ const LoginForm = () => {
       email: "",
     },
     validationSchema: loginValidationSchema,
-    onSubmit: function (values) {
-      // eslint-disable-next-line no-console
-      console.log("the value is", values);
+    onSubmit: (values) => {
       loginWithMagicLink.mutate(values);
     },
   });
@@ -36,9 +34,13 @@ const LoginForm = () => {
         }
       />
       <Button onPress={() => loginFormik.handleSubmit()}>
-        <Text textTransform="capitalize" fontWeight="bold">
-          {t("api.login")}
-        </Text>
+        {loginWithMagicLink.isLoading ? (
+          <Spinner size="sm" />
+        ) : (
+          <Text textTransform="capitalize" fontWeight="bold">
+            {t("api.login")}
+          </Text>
+        )}
       </Button>
     </Stack>
   );

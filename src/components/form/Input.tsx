@@ -14,7 +14,7 @@ interface InputProps extends TextInputProps {
   placeholder?: string;
   errorMsg?: string;
   isDisabled?: boolean;
-  type?: "number" | "text";
+  type?: "number" | "text" | "date";
 }
 
 const Input = (props: InputProps) => {
@@ -38,7 +38,7 @@ const Input = (props: InputProps) => {
               ml: 1,
             }}
           >
-            Email
+            {label}
           </FormControl.Label>
         )}
         <NInput

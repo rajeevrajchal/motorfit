@@ -1,14 +1,17 @@
-import { Center, Text } from "native-base";
+import { Box, Text } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 import FloatingButton from "src/components/FloatingButton";
 import { useState } from "react";
 import BottomModal from "src/components/BottomModal";
+import { useTranslation } from "react-i18next";
+import CreateLog from "../../components/create-logs";
 
 const Gas = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <Center flex={1}>
+    <Box safeArea flex={1} position="relative">
       <Text fontSize="lg" display="flex" mb="20">
         Welcome to Gas List
       </Text>
@@ -18,11 +21,11 @@ const Gas = () => {
       />
       <BottomModal
         open={open}
-        title="Add Record for Gas | EV"
-        component={<Text>Hello add modal</Text>}
+        title={t("api.add_gas_or_ev")}
+        component={<CreateLog />}
         onClose={() => setOpen(false)}
       />
-    </Center>
+    </Box>
   );
 };
 export default Gas;

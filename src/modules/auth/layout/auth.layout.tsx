@@ -6,6 +6,7 @@ import {
   HStack,
   Button,
   useColorMode,
+  ScrollView,
 } from "native-base";
 import { ReactElement } from "react";
 import { ImageBackground } from "react-native";

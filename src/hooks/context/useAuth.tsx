@@ -27,7 +27,12 @@ const { Provider } = AuthContext;
 const useAutData = () => {
   const toast = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [session, setSession] = useState<any>({});
+  const [session, setSession] = useState<any>(null);
+
+  const clearSession = () => {
+    setIsAuthenticated(false);
+    setSession(null);
+  };
 
   const loginWithMagicLink = useMutation(
     ["auth.magic_link"],
@@ -53,6 +58,29 @@ const useAutData = () => {
     }
   );
 
+  const singOutUser = useMutation(
+    ["auth.logout"],
+    async () => {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        throw error;
+      }
+    },
+    {
+      onSuccess: () => {
+        clearSession();
+      },
+      onError: (error: { message: string; code: string }) => {
+        toast.show({
+          title: error.code,
+          description: `${error.code}: ${error?.message}`,
+          placement: "top",
+        });
+      },
+    }
+  );
+
+  // part of authenticating user
   async function handleURL(url: string) {
     const { refreshToken, accessToken } = await extractTokensFromUrl(url);
 
@@ -66,8 +94,7 @@ const useAutData = () => {
         setIsAuthenticated(true);
       })
       .catch(() => {
-        setSession({});
-        setIsAuthenticated(false);
+        clearSession();
       });
   }
 
@@ -96,8 +123,7 @@ const useAutData = () => {
         handleURL;
       })
       .catch(() => {
-        setSession({});
-        setIsAuthenticated(false);
+        clearSession();
       })
       .finally(() => {
         addLinkingEventListener();
@@ -109,6 +135,7 @@ const useAutData = () => {
     session,
 
     loginWithMagicLink,
+    singOutUser,
   };
 };
 

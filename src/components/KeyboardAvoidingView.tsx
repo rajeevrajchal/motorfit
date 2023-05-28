@@ -14,8 +14,8 @@ const KeyboardAvoidingView = (props: KeyboardAvoidingViewProps) => {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <NKeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        flex={1}
       >
         {children}
       </NKeyboardAvoidingView>
