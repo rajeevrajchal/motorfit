@@ -26,7 +26,7 @@ const StackNavigation = (props: StackNavigationProps) => {
       screenOptions={{
         headerTitleAlign: "center",
         headerShown: headerShown || false,
-        headerBackTitle: "",
+        headerBackTitle: " ",
         headerBackAllowFontScaling: true,
         headerTitleStyle: {
           textTransform: "capitalize",

@@ -36,8 +36,6 @@ const dashboardRoutes: StackProps[] = [
   },
 ];
 
-console.log(authRoutes, "authRoutes");
-
 const AppNavigator = () => {
   const { isAuthenticated } = useAuth();
   return (

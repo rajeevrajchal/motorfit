@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "src/constant/supabase";
+import { supabase } from "src/plugins/supabase";
 import { useAuth } from "./context/useAuth";
 import { useToast } from "native-base";
 

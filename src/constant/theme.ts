@@ -1,5 +1,18 @@
 import { extendTheme, ITheme } from "native-base";
 
+// const schema = {
+// 50: "#f8fafc",
+// 100: "#f1f5f9",
+// 200: "#e2e8f0",
+// 300: "#cbd5e1",
+// 400: "#818cf8",
+// 500: "#4f46e5",
+// 600: "#0284c7",
+// 700: "#004282",
+// 800: "#002851",
+// 900: "#000e21",
+// };
+
 const schema = {
   50: "#f8fafc",
   100: "#f1f5f9",
@@ -45,6 +58,9 @@ export const theme: ITheme = extendTheme({
   fonts: {},
   components: {
     Button: {
+      baseStyle: {
+        rounded: "xl",
+      },
       defaultProps: {
         colorScheme: "primary",
         variant: "solid",

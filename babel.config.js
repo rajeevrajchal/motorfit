@@ -12,6 +12,16 @@ module.exports = function (api) {
           },
         },
       ],
+      [
+        "i18next-extract",
+        {
+          locales: ["en"],
+          outputPath: "src/lang/{{ns}}.json",
+          keyAsDefaultValue: ["en"],
+          keySeparator: null,
+          nsSeparator: null,
+        },
+      ],
     ],
   };
 };
