@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
 import { ROUTE, SCREENS } from "./route";
-import { Box } from "native-base";
 
 const Tab = createBottomTabNavigator();
 

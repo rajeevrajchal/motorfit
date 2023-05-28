@@ -1,17 +1,15 @@
-import { useNavigation } from "@react-navigation/native";
-import { Center, Text, Button } from "native-base";
-import { NavigationProp } from "src/types/navigation.type";
+import { Stack, Text } from "native-base";
+import AuthLayout from "../layout/auth.layout";
+import { useTranslation } from "react-i18next";
+import LoginForm from "../component/login-form";
 
 const Login = () => {
-  const navigation = useNavigation<NavigationProp["navigation"]>();
+  const { t } = useTranslation();
 
   return (
-    <Center flex={1}>
-      <Text fontSize="lg" display="flex" mb="20">
-        Welcome to login
-      </Text>
-      <Button onPress={() => navigation.goBack()}>Back</Button>
-    </Center>
+    <AuthLayout title={t("api.login")} description={t("api.login_description")}>
+      <LoginForm />
+    </AuthLayout>
   );
 };
 export default Login;

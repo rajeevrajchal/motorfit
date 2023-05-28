@@ -1,43 +1,36 @@
-import { useNavigation } from "@react-navigation/native";
-import { Center, Text, Box, Button, useColorMode, Stack } from "native-base";
-import { useState } from "react";
+import { Button, Stack, Text } from "native-base";
 import { useTranslation } from "react-i18next";
-import { ROUTE } from "src/navigation/route";
+import { useNavigation } from "@react-navigation/native";
+
 import { NavigationProp } from "src/types/navigation.type";
+import AuthLayout from "../layout/auth.layout";
+import { ROUTE } from "src/navigation/route";
 
 const Welcome = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const navigation = useNavigation<NavigationProp["navigation"]>();
   const { t } = useTranslation();
+  const navigation = useNavigation<NavigationProp["navigation"]>();
 
   return (
-    <Center flex={1}>
-      <Box
-        p={4}
-        maxW="300"
-        _dark={{
-          bg: "coolGray.800",
-        }}
-        _light={{
-          bg: "warmGray.50",
-        }}
-      >
-        <Text fontSize="lg" display="flex" mb="20">
-          The active color mode is{" "}
-          <Text bold fontSize="lg">
-            {colorMode}
+    <AuthLayout
+      title={t("api.welcome")}
+      description={t("api.welcome_description")}
+    >
+      <Stack space={4}>
+        <Button onPress={() => navigation.navigate(ROUTE.login)}>
+          <Text textTransform="capitalize" fontWeight="bold">
+            {t("api.login")}
           </Text>
-          <Text>{t("common.welcome")}</Text>
-          <Text>{t("common.love")}</Text>
-        </Text>
-        <Stack space={8}>
-          <Button onPress={toggleColorMode}>Toggle</Button>
-          <Button onPress={() => navigation.navigate(ROUTE.login)}>
-            Go to welcome
-          </Button>
-        </Stack>
-      </Box>
-    </Center>
+        </Button>
+        <Button
+          onPress={() => navigation.navigate(ROUTE.login)}
+          variant="ghost"
+        >
+          <Text textTransform="capitalize" fontWeight="bold">
+            {t("api.signup")}
+          </Text>
+        </Button>
+      </Stack>
+    </AuthLayout>
   );
 };
 export default Welcome;
