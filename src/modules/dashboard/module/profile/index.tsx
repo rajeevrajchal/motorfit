@@ -12,13 +12,7 @@ const Profile = () => {
         Welcome to Profile
       </Text>
       <Button onPress={() => singOutUser.mutate()}>
-        {singOutUser.isLoading ? (
-          <Spinner size="sm" />
-        ) : (
-          <Text textTransform="capitalize" fontWeight="bold">
-            {t("api.logout")}
-          </Text>
-        )}
+        {singOutUser.isLoading ? <Spinner size="sm" /> : t("api.logout")}
       </Button>
     </Center>
   );

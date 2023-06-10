@@ -17,17 +17,13 @@ const Welcome = () => {
     >
       <Stack space={4}>
         <Button onPress={() => navigation.navigate(ROUTE.login)}>
-          <Text textTransform="capitalize" fontWeight="bold">
-            {t("api.login")}
-          </Text>
+          {t("api.login")}
         </Button>
         <Button
           onPress={() => navigation.navigate(ROUTE.login)}
           variant="ghost"
         >
-          <Text textTransform="capitalize" fontWeight="bold">
-            {t("api.signup")}
-          </Text>
+          {t("api.signup")}
         </Button>
       </Stack>
     </AuthLayout>

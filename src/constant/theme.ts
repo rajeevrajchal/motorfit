@@ -62,6 +62,10 @@ export const theme: ITheme = extendTheme({
         rounded: 16,
         size: "xl",
         p: 4,
+        _text: {
+          textTransform: "capitalize",
+          fontWeight: "bold",
+        },
       },
       defaultProps: {
         colorScheme: "primary",

@@ -1,10 +1,11 @@
 import { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
+import { REDIRECT_URL } from "@env";
 
 import { RootStackParamList } from "src/types/navigation.type";
 import { ROUTE, SCREENS } from "src/navigation/route";
 
-export const loginRedirectUrl = "exp://192.168.101.10:19000/--/welcome";
+export const loginRedirectUrl = `${REDIRECT_URL}/--/welcome`;
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL("/")],

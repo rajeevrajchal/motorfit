@@ -1,4 +1,4 @@
-import { Box, Text } from "native-base";
+import { Box, Text, Stack, Button } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 import FloatingButton from "src/components/FloatingButton";
 import { useState } from "react";
@@ -11,10 +11,21 @@ const Gas = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <Box safeArea flex={1} position="relative">
-      <Text fontSize="lg" display="flex" mb="20">
-        Welcome to Gas List
-      </Text>
+    <Box safeArea flex={1} position="relative" mt={12} px={4}>
+      <Stack direction="row" flexWrap="wrap" space={3}>
+        <Button size="xs" variant="outline" flex={1} w="full">
+          {t("api.week")}
+        </Button>
+        <Button size="xs" variant="outline" flex={1} w="full">
+          {t("api.week")}
+        </Button>
+        <Button size="xs" variant="outline" flex={1} w="full">
+          {t("api.week")}
+        </Button>
+        <Button size="xs" variant="outline" flex={1} w="full">
+          {t("api.week")}
+        </Button>
+      </Stack>
       <FloatingButton
         onPress={() => setOpen(!open)}
         icon={<FontAwesome5 name="gas-pump" size={24} color="#565D5E" />}

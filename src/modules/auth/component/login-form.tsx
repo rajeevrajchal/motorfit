@@ -34,13 +34,7 @@ const LoginForm = () => {
         }
       />
       <Button onPress={() => loginFormik.handleSubmit()}>
-        {loginWithMagicLink.isLoading ? (
-          <Spinner size="sm" />
-        ) : (
-          <Text textTransform="capitalize" fontWeight="bold">
-            {t("api.login")}
-          </Text>
-        )}
+        {loginWithMagicLink.isLoading ? <Spinner size="sm" /> : t("api.login")}
       </Button>
     </Stack>
   );
